@@ -11,6 +11,7 @@
     <modules>
         <module>mybatis_generator2023</module>
         <module>cloud_01_provider_payment_9001</module>
+        <module>cloud_00_common</module>
     </modules>
 
     <properties>
@@ -29,6 +30,7 @@
         <persistence-api.version>1.0.2</persistence-api.version>
         <springboot.version>3.2.4</springboot.version>
         <springcloud.version>2023.0.1</springcloud.version>
+        <jackson.version>2.19.4</jackson.version>
         <springcloud.alibaba.verison>2023.0.1.0</springcloud.alibaba.verison>
     </properties>
 
@@ -112,6 +114,11 @@
                 <artifactId>persistence-api</artifactId>
                 <version>${persistence-api.version}</version>
             </dependency>
+            <!-- <dependency> -->
+            <!--     <groupId>com.fasterxml.jackson.core</groupId> -->
+            <!--     <artifactId>jackson-databind</artifactId> -->
+            <!--     <version>${jackson.version}</version> -->
+            <!-- </dependency> -->
 
 
         </dependencies>

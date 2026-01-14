@@ -1,4 +1,4 @@
-package com.wander.entity;
+package com.wander.vo;
 
 import java.math.BigDecimal;
 import java.util.Date;
