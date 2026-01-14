@@ -52,7 +52,9 @@ public class ResultData<T> {
         this.timestamp = timestamp;
     }
 
-    private static final class ResultDataBuilder<T> {
+
+
+    private static class ResultDataBuilder<T> {
 
         private String code;
 
@@ -62,12 +64,12 @@ public class ResultData<T> {
 
         private ResultDataBuilder() {}
 
-        public static ResultDataBuilder builder() {
-            return new ResultDataBuilder<>();
+        public static <T> ResultDataBuilder<T> of() {
+            return new ResultDataBuilder<T>();
         }
 
-        public ResultDataBuilder<T> code(String code) {
-            this.code = code;
+        public ResultDataBuilder<T> code(ReturnCodeEnum code) {
+            this.code = code.getCode();
             return this;
         }
 
@@ -85,10 +87,35 @@ public class ResultData<T> {
         }
     }
 
+    public static <T> ResultDataBuilder<T> builder() {
+        return ResultDataBuilder.of();
+    }
+
+    // 添加一个简化版的构建方法
+    public static <T> ResultData<T> of(String code, String msg, T data) {
+        return new ResultData<>(code, msg, data);
+    }
+
+    // 成功方法使用Builder
     public static <T> ResultData<T> success(T data) {
-        return new ResultDataBuilder<T>()
-                .code(ReturnCodeEnum.RC200.getCode())
+        return ResultData.<T>builder()
+                .code(ReturnCodeEnum.RC200)
                 .data(data)
+                .build();
+    }
+
+    // 错误方法
+    public static <T> ResultData<T> error(String msg) {
+        return ResultData.<T>builder()
+                .code(ReturnCodeEnum.RC500) // 确保ReturnCodeEnum有RC500
+                .msg(msg)
+                .build();
+    }
+
+    public static <T> ResultData<T> error(ReturnCodeEnum code, String msg) {
+        return ResultData.<T>builder()
+                .code(code)
+                .msg(msg)
                 .build();
     }
 }
