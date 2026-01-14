@@ -21,7 +21,7 @@
         <hutool.version>5.8.22</hutool.version>
         <lombok.version>1.18.42</lombok.version>
         <druid.verion>1.1.20</druid.verion>
-        <mybatis.version>3.0.2</mybatis.version>
+        <mybatis.version>3.0.3</mybatis.version>
         <swagger3.version>2.2.0</swagger3.version>
         <mapper.version>4.2.3</mapper.version>
         <fastjson2.version>2.0.53</fastjson2.version>
