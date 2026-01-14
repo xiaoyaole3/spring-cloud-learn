@@ -31,7 +31,7 @@ public class PayController {
     }
 
     @GetMapping("/get")
-    public Pay getById(Integer id) {
+    public Pay getById(@RequestParam("id") Integer id) {
         return payService.getById(id);
     }
 
