@@ -13,6 +13,9 @@ public class ResultData<T> {
 
     private Long timestamp;
 
+    public ResultData() {
+    }
+
     public ResultData(String code, String msg, T data) {
         this.code = code;
         this.msg = msg;
