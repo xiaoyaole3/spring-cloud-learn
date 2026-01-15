@@ -23,7 +23,9 @@ public class PayController {
 
     @Operation(summary = "新增", description = "新增一个支付")
     @PostMapping("/add")
-    public ResultData<Integer> add(@RequestBody PayDTO pay) {
+    public ResultData<Integer> add(@RequestBody PayDTO payDTO) {
+        Pay pay = new Pay();
+        BeanUtils.copyProperties(payDTO, pay);
         return ResultData.success(payService.add(pay));
     }
 
@@ -35,7 +37,9 @@ public class PayController {
 
     @Operation(summary = "更改", description = "更改一个支付")
     @PutMapping("/update")
-    public ResultData<Integer> update(@RequestBody PayDTO pay) {
+    public ResultData<Integer> update(@RequestBody PayDTO payDTO) {
+        Pay pay = new Pay();
+        BeanUtils.copyProperties(payDTO, pay);
         return ResultData.success(payService.update(pay));
     }
 
