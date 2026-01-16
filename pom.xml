@@ -15,6 +15,12 @@
         <module>cloud_02_consumer_order_8001</module>
     </modules>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.4</version>
+    </parent>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -37,14 +43,14 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- springboot parent 依赖 -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-parent</artifactId>
-                <version>${springboot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+            <!-- &lt;!&ndash; springboot parent 依赖 &ndash;&gt; -->
+            <!-- <dependency> -->
+            <!--     <groupId>org.springframework.boot</groupId> -->
+            <!--     <artifactId>spring-boot-starter-parent</artifactId> -->
+            <!--     <version>${springboot.version}</version> -->
+            <!--     <type>pom</type> -->
+            <!--     <scope>import</scope> -->
+            <!-- </dependency> -->
             <!-- spring cloud 相关依赖 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
