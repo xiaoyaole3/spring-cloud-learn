@@ -3,10 +3,9 @@ package com.wander.apis;
 import com.wander.dto.PayDTO;
 import com.wander.vo.ResultData;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @FeignClient(value = "cloud-provider-payment")
 public interface PaymentFeignAPI {
@@ -14,9 +13,17 @@ public interface PaymentFeignAPI {
     @PostMapping("/pay/add")
     ResultData<Integer> add(@RequestBody PayDTO payDTO);
 
+    @DeleteMapping("/del/{id}")
+    ResultData<Integer> delete(@PathVariable(value = "id") Integer id);
+
+    @PutMapping("/update")
+    ResultData<Integer> update(@RequestBody PayDTO payDTO);
+
     @GetMapping("/pay/get")
     ResultData<PayDTO> getById(@RequestParam(value = "id", required = true) Integer id);
 
+    @GetMapping("/all")
+    ResultData<List<PayDTO>> getAll();
 
     @GetMapping("/pay/consul")
     ResultData<String> getConsulConfig();

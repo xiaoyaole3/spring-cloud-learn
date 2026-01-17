@@ -58,8 +58,15 @@ public class PayController {
 
     @Operation(summary = "获取全部", description = "获取全部支付")
     @GetMapping("/all")
-    public ResultData<List<Pay>> getAll() {
-        return ResultData.success(payService.getAll());
+    public ResultData<List<PayDTO>> getAll() {
+        List<PayDTO> list = payService.getAll()
+                .stream()
+                .map(o -> {
+                    PayDTO payDTO = new PayDTO();
+                    BeanUtils.copyProperties(o, payDTO);
+                    return payDTO;
+                }).toList();
+        return ResultData.success(list);
     }
 
     @Value("${server.port}")
