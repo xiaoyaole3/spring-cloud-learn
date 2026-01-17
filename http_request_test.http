@@ -1,0 +1,29 @@
+# ------ order openfeign ----
+### 通过Feign接口查询
+GET http://127.0.0.1:8002/order/feign/get?id=2
+
+<> 2026-01-17T221021.200.json
+<> 2026-01-17T220958.400.json
+
+### 模拟依旧支持LB的能力
+
+GET http://127.0.0.1:8002/order/feign/consul
+
+<> 2026-01-17T221048-1.200.json
+<> 2026-01-17T221048.200.json
+<> 2026-01-17T221045.200.json
+
+### 使用OpenFeign新增一条记录
+
+POST http://127.0.0.1:8002/order/feign/add
+Content-Type: application/json
+
+{
+  "payNo": "pay17203623",
+  "orderNo": "6544bafb42d2",
+  "amount": 100.30,
+  "userId": 2
+}
+
+### 使用openfeign查询全部数据
+GET http://127.0.0.1:8002/order/feign/all
