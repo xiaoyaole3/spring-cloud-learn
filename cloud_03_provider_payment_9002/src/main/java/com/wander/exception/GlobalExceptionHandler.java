@@ -12,6 +12,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResultData<String> globalExceptionHandler(Exception e) {
+        e.printStackTrace();
         return ResultData.error(e.getMessage());
     }
 }
