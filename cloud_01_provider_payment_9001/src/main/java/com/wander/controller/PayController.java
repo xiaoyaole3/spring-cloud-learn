@@ -79,6 +79,12 @@ public class PayController {
     @GetMapping("/consul")
     public ResultData<String> getConsulConfig() {
         String result = "Server port = " + serverPort + " and say = " + consulInfo;
+
+        try {
+            Thread.sleep(67000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return ResultData.success(result);
     }
 }

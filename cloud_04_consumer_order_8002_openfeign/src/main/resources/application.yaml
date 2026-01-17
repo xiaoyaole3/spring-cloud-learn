@@ -10,3 +10,10 @@ spring:
       port: 8500
       discovery:
         service-name: ${spring.application.name}
+# 全局OpenFeign超时配置
+    openfeign:
+      client:
+        config:
+          default: # 对于全部的进行控制
+            connectTimeout: 30000
+            readTimeout: 30000

@@ -8,6 +8,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Tag(name = "订单模块", description = "订单用于调用支付模块")
@@ -51,6 +53,13 @@ public class OrderController {
     @Operation(summary = "order中模拟获取Consul中的配置信息", description = "注意这里是使用的客户端")
     @GetMapping("/consul")
     public ResultData<String> getConsulConfig() {
-        return paymentFeignAPI.getConsulConfig();
+        try {
+            System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+            return paymentFeignAPI.getConsulConfig();
+        } catch (Exception e) {
+            System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+            e.printStackTrace();
+        }
+        return null;
     }
 }
