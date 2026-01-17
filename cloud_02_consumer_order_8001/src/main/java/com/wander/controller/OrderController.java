@@ -26,7 +26,7 @@ public class OrderController {
     @Resource
     private RestTemplate restTemplate;
 
-    @GetMapping("/add")
+    @PostMapping("/add")
     public ResultData addOrder(@RequestBody PayDTO payDTO) {
         return restTemplate.postForObject(PAYMENT_URL + "/add", payDTO, ResultData.class);
     }
