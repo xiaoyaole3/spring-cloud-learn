@@ -13,16 +13,16 @@ public interface PaymentFeignAPI {
     @PostMapping("/pay/add")
     ResultData<Integer> add(@RequestBody PayDTO payDTO);
 
-    @DeleteMapping("/del/{id}")
+    @DeleteMapping("/pay/del/{id}")
     ResultData<Integer> delete(@PathVariable(value = "id") Integer id);
 
-    @PutMapping("/update")
+    @PutMapping("/pay/update")
     ResultData<Integer> update(@RequestBody PayDTO payDTO);
 
     @GetMapping("/pay/get")
     ResultData<PayDTO> getById(@RequestParam(value = "id", required = true) Integer id);
 
-    @GetMapping("/all")
+    @GetMapping("/pay/all")
     ResultData<List<PayDTO>> getAll();
 
     @GetMapping("/pay/consul")
