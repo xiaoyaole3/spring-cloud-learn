@@ -53,4 +53,13 @@ public class OrderController {
     public ResultData<List<PayDTO>> getAll() {
         return restTemplate.getForObject(PAYMENT_URL + "/all", ResultData.class);
     }
+
+    // 默认情况下是通过Ribbon的方式负载
+    @Operation(summary = "order中模拟获取Consul中的配置信息", description = "注意这里是使用的客户端")
+    @GetMapping("/consul")
+    public ResultData<String> getConsulConfig() {
+        ResultData resultData = restTemplate.getForObject(PAYMENT_URL + "/consul", ResultData.class);
+        String data = (String) resultData.getData();
+        return ResultData.success(data);
+    }
 }
