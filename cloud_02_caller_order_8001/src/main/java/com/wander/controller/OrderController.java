@@ -5,6 +5,8 @@ import com.wander.vo.ResultData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -61,5 +63,22 @@ public class OrderController {
         ResultData resultData = restTemplate.getForObject(PAYMENT_URL + "/consul", ResultData.class);
         String data = (String) resultData.getData();
         return ResultData.success(data);
+    }
+
+    @Resource
+    private DiscoveryClient discoveryClient;
+
+    @Operation(summary = "通过DiscoveryClient查询注册到Consul中的信息")
+    @GetMapping("/discovery")
+    public void discovery() {
+        List<String> services = discoveryClient.getServices();
+        System.out.println("all services : " + services);
+        List<ServiceInstance> instances = discoveryClient.getInstances("cloud-provider-payment");
+        for (ServiceInstance instance : instances) {
+            String serviceId = instance.getServiceId();
+            String host = instance.getHost();
+            int port = instance.getPort();
+            System.out.println("serviceId : " + serviceId + " host : " + host + " port : " + port);
+        }
     }
 }
