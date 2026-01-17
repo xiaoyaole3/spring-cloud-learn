@@ -6,8 +6,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class CloudCallerOrder8001Application {
+public class CloudConsumerOrder8001Application {
     public static void main(String[] args) {
-        SpringApplication.run(CloudCallerOrder8001Application.class, args);
+        SpringApplication.run(CloudConsumerOrder8001Application.class, args);
     }
 }

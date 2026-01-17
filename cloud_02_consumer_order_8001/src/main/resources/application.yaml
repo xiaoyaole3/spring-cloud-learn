@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: cloud-caller-order
+    name: cloud-consumer-order
 
   cloud:
     consul:
