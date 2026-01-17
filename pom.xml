@@ -13,6 +13,7 @@
         <module>cloud_01_provider_payment_9001</module>
         <module>cloud_00_common</module>
         <module>cloud_02_consumer_order_8001</module>
+        <module>cloud_03_provider_payment_9002</module>
     </modules>
 
     <parent>
