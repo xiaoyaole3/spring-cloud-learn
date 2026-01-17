@@ -39,6 +39,7 @@
         <springcloud.version>2023.0.1</springcloud.version>
         <jackson.version>2.19.4</jackson.version>
         <springcloud.alibaba.verison>2023.0.1.0</springcloud.alibaba.verison>
+        <spring.bootstrap.version>4.0.4</spring.bootstrap.version>
     </properties>
 
     <dependencyManagement>
@@ -126,7 +127,6 @@
             <!--     <artifactId>jackson-databind</artifactId> -->
             <!--     <version>${jackson.version}</version> -->
             <!-- </dependency> -->
-
 
         </dependencies>
 

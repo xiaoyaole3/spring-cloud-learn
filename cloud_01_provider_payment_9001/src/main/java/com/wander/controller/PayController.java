@@ -8,10 +8,14 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// 开启配置中心配置改变后自动刷新
+@RefreshScope
 @Tag(name = "支付微服务模块", description = "支付CRUD")
 @RestController
 @RequestMapping("/pay")
@@ -58,4 +62,16 @@ public class PayController {
         return ResultData.success(payService.getAll());
     }
 
+    @Value("${server.port}")
+    private String serverPort;
+
+    @Value("${wander.info}")
+    private String consulInfo;
+
+    @Operation(summary = "模拟获取Consul中的配置信息")
+    @GetMapping("/consul")
+    public ResultData<String> getConsulConfig() {
+        String result = "Server port = " + serverPort + " and say = " + consulInfo;
+        return ResultData.success(result);
+    }
 }
