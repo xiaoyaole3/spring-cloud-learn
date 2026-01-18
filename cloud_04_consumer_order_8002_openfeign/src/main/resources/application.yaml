@@ -14,6 +14,10 @@ spring:
     openfeign:
       client:
         config:
-          default: # 对于全部的进行控制
-            connectTimeout: 30000
-            readTimeout: 30000
+          default: # 对于全部的进行控制，修改为4s更容易观察现象
+            connectTimeout: 4000
+            readTimeout: 4000
+      # 使用httpclient5
+      httpclient:
+        hc5:
+          enabled: true

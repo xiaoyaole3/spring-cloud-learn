@@ -63,6 +63,17 @@
             <artifactId>cloud_00_provider_payment_common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+        <!-- openfeign 修改默认使用的HTTP连接工具 HttpURLConnection -->
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-hc5</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
