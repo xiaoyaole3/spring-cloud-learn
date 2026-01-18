@@ -27,4 +27,8 @@ public interface PaymentFeignAPI {
 
     @GetMapping("/pay/consul")
     ResultData<String> getConsulConfig();
+
+    // 注意这里一个Feign代表一个服务会比较合适
+    @GetMapping("/circuit/test")
+    String testCircuitBreaker(@RequestParam(value = "id", defaultValue = "100") Integer id);
 }
