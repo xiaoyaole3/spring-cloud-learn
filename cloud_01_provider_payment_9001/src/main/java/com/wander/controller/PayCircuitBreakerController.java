@@ -1,5 +1,6 @@
 package com.wander.controller;
 
+import com.wander.vo.ResultData;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class PayCircuitBreakerController {
 
     @GetMapping("/test")
-    public String testCircuitBreaker(@RequestParam(value = "id", defaultValue = "100") Integer id) {
+    public ResultData<String> testCircuitBreaker(@RequestParam(value = "id", defaultValue = "100") Integer id) {
         if (id == -4) {
             throw new RuntimeException("circuit breaker failed, not  -4");
         }
@@ -25,7 +26,7 @@ public class PayCircuitBreakerController {
                 throw new RuntimeException(e);
             }
         }
-        return "success:[" + id + "]-" + UUID.randomUUID().toString();
+        return ResultData.success("success:[" + id + "]-" + UUID.randomUUID().toString());
     }
 
 }

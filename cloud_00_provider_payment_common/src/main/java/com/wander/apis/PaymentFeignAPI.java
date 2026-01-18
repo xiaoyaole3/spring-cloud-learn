@@ -30,5 +30,5 @@ public interface PaymentFeignAPI {
 
     // 注意这里一个Feign代表一个服务会比较合适
     @GetMapping("/circuit/test")
-    String testCircuitBreaker(@RequestParam(value = "id", defaultValue = "100") Integer id);
+    ResultData<String> testCircuitBreaker(@RequestParam(value = "id", defaultValue = "100") Integer id);
 }
