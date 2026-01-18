@@ -25,19 +25,33 @@
 
 ## cloud_00_common
 整个工程的公共类包，里面定义了工程里面公用的返回类型包装以及枚举等。
-
 > ❗️要注意学习ResultData中实现的构造器模式，通过静态内部类实现。
+
+## cloud_00_provider_payment_common
+
+`payment` 工程中共用的 OpenFeign 接口。
 
 ## cloud_01_provider_payment_9001
 
-服务端 `payment` 工程，用于连接数据库提供服务。
+`payment` 工程，用于连接数据库提供服务。
 
 在配置文件中提供了连接Consul相关配置信息。
 
 ## cloud_02_consumer_order_8001
 
-服务端 `order` 工程，用于通过 `RestTemplate` 通过注册中心访问服务端。
+`order` 工程，用于通过 `RestTemplate` 通过注册中心访问服务端。
 
 ## cloud_03_provider_payment_9002
 
-服务端 `payment` 工程，等同于 `cloud_01_provider_payment_9001`， 用来表示同一个服务的不同实例。
+`payment` 工程，等同于 `cloud_01_provider_payment_9001`， 用来表示同一个服务的不同实例。
+
+## cloud_04_consumer_order_8002_openfeign
+
+`order` 工程，通过 OpenFeign 实现对于 `payment` 工程的访问。
+
+其中开启了 OpenFeign 的下面的功能：
+
+- 设置客户端超时时间
+- 修改默认使用的HTTP连接方式为HttpClient5
+- 请求/响应的GZIP压缩
+- 日志打印功能
