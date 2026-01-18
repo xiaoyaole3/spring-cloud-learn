@@ -35,21 +35,44 @@ spring:
         group:
           enabled: true
 
+# 基于 count_based 的配置
+#resilience4j:
+#  circuitbreaker:
+#    configs:
+#      default: # 默认配置
+#        failure-rate-threshold: 50
+#        sliding-window-type: count_based
+#        sliding-window-size: 6
+#        minimum-number-of-calls: 6
+#        automatic-transition-from-open-to-half-open-enabled: true
+#        wait-duration-in-open-state:
+#          seconds: 5
+#        permitted-number-of-calls-in-half-open-state: 2
+#        record-exceptions:
+#          - java.lang.Exception
+
+# 基于time_based 配置
 resilience4j:
+  timelimiter:
+    configs:
+      default:
+        timeout-duration:
+          seconds: 10 # timelimiter默认限制远程1s，超过1s就会超时异常，配置了降级就走降级逻辑
   circuitbreaker:
     configs:
-      default: # 默认配置
+      default:
         failure-rate-threshold: 50
-        sliding-window-type: count_based
-        sliding-window-size: 6
-        minimum-number-of-calls: 6
-        automatic-transition-from-open-to-half-open-enabled: true
+        slow-call-duration-threshold:
+          seconds: 2s
+        slow-call-rate-threshold: 30
+        sliding-window-type: time_based
+        sliding-window-size: 2
+        minimum-number-of-calls: 2
+        permitted-number-of-calls-in-half-open-state: 2
         wait-duration-in-open-state:
           seconds: 5
-        permitted-number-of-calls-in-half-open-state: 2
         record-exceptions:
           - java.lang.Exception
-
     instances:
       cloud-provider-payment:
         base-config: default
