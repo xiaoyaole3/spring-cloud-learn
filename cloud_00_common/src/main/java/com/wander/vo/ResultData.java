@@ -107,6 +107,15 @@ public class ResultData<T> {
                 .build();
     }
 
+    // 警告方法
+    public static <T> ResultData<T> warn(String msg) {
+        return ResultData.<T>builder()
+                .code(ReturnCodeEnum.RC201)
+                .msg(msg)
+                .build();
+    }
+
+
     // 错误方法
     public static <T> ResultData<T> error(String msg) {
         return ResultData.<T>builder()
