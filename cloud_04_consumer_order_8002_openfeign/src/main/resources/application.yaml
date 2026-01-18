@@ -29,4 +29,7 @@ spring:
           min-request-size: 2048 # 最小触发压缩的大小
         response:
           enabled: true
-
+# 开启打印OpenFeign接口的日志
+logging:
+  level:
+    com.wander.apis.PaymentFeignAPI: debug
