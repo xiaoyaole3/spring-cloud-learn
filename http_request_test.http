@@ -27,3 +27,10 @@ Content-Type: application/json
 
 ### 使用openfeign查询全部数据
 GET http://127.0.0.1:8002/order/feign/all
+
+### 模拟断路器接口正常请求
+GET http://127.0.0.1:8002/order/circuit/test?id=1
+
+### 模拟断路器接口异常请求，可以看到服务降级
+GET http://127.0.0.1:8002/order/circuit/test?id=-4
+

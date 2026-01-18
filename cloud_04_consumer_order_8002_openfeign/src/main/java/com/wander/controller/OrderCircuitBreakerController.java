@@ -10,6 +10,7 @@ import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -31,6 +32,8 @@ public class OrderCircuitBreakerController {
     // fallback方法，注意参数一定要为Throwable
     // 这里最好要有原本的参数，增加Throwable参数
     public ResultData<String> fallbackMethod(Integer id, Throwable throwable) {
-        return ResultData.warn("请稍后重试...");
+        return ResultData.warn("请稍后重试..., id =" + id +
+                "\n, throwable message =" + throwable.getMessage() +
+                "\n, cause =" + throwable.getCause());
     }
 }
