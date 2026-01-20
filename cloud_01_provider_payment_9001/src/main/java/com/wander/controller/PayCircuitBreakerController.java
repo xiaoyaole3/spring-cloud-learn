@@ -45,4 +45,10 @@ public class PayCircuitBreakerController {
         return ResultData.success("success:[" + id + "]-" + UUID.randomUUID().toString());
     }
 
+    @GetMapping("/rateLimit")
+    public ResultData<String> testRateLimit(@RequestParam("id") Integer id) {
+        return ResultData.success("Rate limit success:[" + id + "]-" + UUID.randomUUID().toString());
+    }
+
+
 }

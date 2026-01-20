@@ -34,4 +34,7 @@ public interface PaymentFeignAPI {
 
     @GetMapping("/circuit/bulkhead")
     ResultData<String> testBulkHead(@RequestParam("id") Integer id);
+
+    @GetMapping("/circuit/rateLimit")
+    ResultData<String> testRateLimit(@RequestParam("id") Integer id);
 }

@@ -4,6 +4,7 @@ import com.wander.apis.PaymentFeignAPI;
 import com.wander.vo.ResultData;
 import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
@@ -34,12 +35,14 @@ public class OrderCircuitBreakerController {
                 "\n, cause =" + throwable.getCause());
     }
 
+    // 隔断，信号量方法的使用
     @Bulkhead(name = "cloud-provider-payment", fallbackMethod = "myBulkHeaderFallback", type = Bulkhead.Type.SEMAPHORE)
     @GetMapping("/bulkhead/semaphore")
     public ResultData<String> bulkHeadSemaphore(@RequestParam(value = "id", defaultValue = "100") Integer id) {
         return paymentFeignAPI.testBulkHead(id);
     }
 
+    // 隔断，线程池方法的使用
     @Bulkhead(name = "cloud-provider-payment", fallbackMethod = "myBulkHeaderFallbackThreadPool", type = Bulkhead.Type.THREADPOOL)
     @GetMapping("/bulkhead/threadPool")
     public CompletableFuture<ResultData<String>> bulkHeadThreadPool(@RequestParam(value = "id", defaultValue = "100") Integer id) {
@@ -66,5 +69,18 @@ public class OrderCircuitBreakerController {
         return CompletableFuture.supplyAsync(() -> ResultData.warn("Bulk超过了最大限制，请稍后重试..., id =" + id +
                 "\n, throwable message =" + throwable.getMessage() +
                 "\n, cause =" + throwable.getCause()));
+    }
+
+    // 限流方法的使用
+    @RateLimiter(name = "cloud-provider-payment", fallbackMethod = "myRateLimitFallback")
+    @GetMapping("/rateLimit")
+    public ResultData<String> rateLimit(@RequestParam(value = "id", defaultValue = "100") Integer id) {
+        return paymentFeignAPI.testRateLimit(id);
+    }
+
+    public ResultData<String> myRateLimitFallback(Integer id, Throwable throwable) {
+        return ResultData.warn("RateLimit超过了最大限制，请稍后重试..., id =" + id +
+                "\n, throwable message =" + throwable.getMessage() +
+                "\n, cause =" + throwable.getCause());
     }
 }

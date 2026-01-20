@@ -53,6 +53,15 @@ spring:
 
 # 基于time_based 配置
 resilience4j:
+  ratelimiter:
+    configs:
+      default:
+        limit-for-period: 2
+        limit-refresh-period: 1s
+        timeout-duration: 1
+    instances:
+      cloud-provider-payment:
+        base-config: default
   timelimiter:
     configs:
       default:

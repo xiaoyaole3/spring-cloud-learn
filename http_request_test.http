@@ -49,3 +49,6 @@ GET http://127.0.0.1:8002/order/circuit/bulkhead/threadPool?id=3
 
 ### 模拟仓壁隔离接口异常请求-ThreadPool
 GET http://127.0.0.1:8002/order/circuit/bulkhead/threadPool?id=9999
+
+### 模拟限流请求
+GET http://127.0.0.1:8002/order/circuit/rateLimit?id=1
