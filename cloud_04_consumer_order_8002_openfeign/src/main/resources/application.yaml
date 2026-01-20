@@ -32,8 +32,8 @@ spring:
      # 开启断路器相关能力，开启分组能力
       circuitbreaker:
         enabled: true
-        group:
-          enabled: true
+#        group:
+#          enabled: true
 
 # 基于 count_based 的配置
 #resilience4j:
@@ -60,30 +60,30 @@ resilience4j:
     instances:
       cloud-provider-payment:
         base-config: default
-#  thread-pool-bulkhead:
-#    configs:
-#      default:
-#        max-thread-pool-size: 2
-#        core-thread-pool-size: 1
-#        queue-capacity: 1
-#    instances:
-#      cloud-provider-payment:
-#        base-config: default
-#      backendB:
-#        max-thread-pool-size: 1
-#        core-thread-pool-size: 1
-#        queue-capacity: 1
-  bulkhead:
+  thread-pool-bulkhead:
     configs:
       default:
-        max-concurrent-calls: 2
-        max-wait-duration: 1s
+        max-thread-pool-size: 1
+        core-thread-pool-size: 1
+        queue-capacity: 1
     instances:
       cloud-provider-payment:
         base-config: default
       backendB:
-        max-wait-duration: 10ms
-        max-concurrent-calls: 20
+        max-thread-pool-size: 1
+        core-thread-pool-size: 1
+        queue-capacity: 1
+#  bulkhead:
+#    configs:
+#      default:
+#        max-concurrent-calls: 2
+#        max-wait-duration: 1s
+#    instances:
+#      cloud-provider-payment:
+#        base-config: default
+#      backendB:
+#        max-wait-duration: 10ms
+#        max-concurrent-calls: 20
   circuitbreaker:
     configs:
       default:

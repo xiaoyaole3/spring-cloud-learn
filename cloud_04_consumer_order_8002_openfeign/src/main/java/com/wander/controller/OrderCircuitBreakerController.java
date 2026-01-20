@@ -8,6 +8,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+
 @Tag(name = "订单模块CircuitBreaker", description = "订单模块用于测试CircuitBreaker")
 @RestController
 @RequestMapping("/order/circuit")
@@ -37,15 +40,31 @@ public class OrderCircuitBreakerController {
         return paymentFeignAPI.testBulkHead(id);
     }
 
-//    @Bulkhead(name = "cloud-provider-payment", fallbackMethod = "myBulkHeaderFallback", type = Bulkhead.Type.THREADPOOL)
-//    @GetMapping("/bulkhead/threadPool")
-//    public ResultData<String> bulkHeadThreadPool(@RequestParam(value = "id", defaultValue = "100") Integer id) {
-//        return paymentFeignAPI.testBulkHead(id);
-//    }
+    @Bulkhead(name = "cloud-provider-payment", fallbackMethod = "myBulkHeaderFallbackThreadPool", type = Bulkhead.Type.THREADPOOL)
+    @GetMapping("/bulkhead/threadPool")
+    public CompletableFuture<ResultData<String>> bulkHeadThreadPool(@RequestParam(value = "id", defaultValue = "100") Integer id) {
+        System.out.println("Thread name = " + Thread.currentThread().getName());
+
+        try {
+            System.out.println(Thread.currentThread().getName() + " in sleep" + "id = " + id);
+            TimeUnit.SECONDS.sleep(3);
+            System.out.println(Thread.currentThread().getName() + " out sleep" + "id = " + id);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        return CompletableFuture.supplyAsync(() -> paymentFeignAPI.testBulkHead(id));
+    }
 
     public ResultData<String> myBulkHeaderFallback(Integer id, Throwable throwable) {
         return ResultData.warn("Bulk超过了最大限制，请稍后重试..., id =" + id +
                 "\n, throwable message =" + throwable.getMessage() +
                 "\n, cause =" + throwable.getCause());
+    }
+
+    public CompletableFuture<ResultData<String>> myBulkHeaderFallbackThreadPool(Integer id, Throwable throwable) {
+        return CompletableFuture.supplyAsync(() -> ResultData.warn("Bulk超过了最大限制，请稍后重试..., id =" + id +
+                "\n, throwable message =" + throwable.getMessage() +
+                "\n, cause =" + throwable.getCause()));
     }
 }
