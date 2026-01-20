@@ -56,8 +56,34 @@ resilience4j:
   timelimiter:
     configs:
       default:
-        timeout-duration:
-          seconds: 10 # timelimiter默认限制远程1s，超过1s就会超时异常，配置了降级就走降级逻辑
+        timeout-duration: 10s # timelimiter默认限制远程1s，超过1s就会超时异常，配置了降级就走降级逻辑
+    instances:
+      cloud-provider-payment:
+        base-config: default
+#  thread-pool-bulkhead:
+#    configs:
+#      default:
+#        max-thread-pool-size: 2
+#        core-thread-pool-size: 1
+#        queue-capacity: 1
+#    instances:
+#      cloud-provider-payment:
+#        base-config: default
+#      backendB:
+#        max-thread-pool-size: 1
+#        core-thread-pool-size: 1
+#        queue-capacity: 1
+  bulkhead:
+    configs:
+      default:
+        max-concurrent-calls: 2
+        max-wait-duration: 1s
+    instances:
+      cloud-provider-payment:
+        base-config: default
+      backendB:
+        max-wait-duration: 10ms
+        max-concurrent-calls: 20
   circuitbreaker:
     configs:
       default:

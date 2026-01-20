@@ -29,4 +29,20 @@ public class PayCircuitBreakerController {
         return ResultData.success("success:[" + id + "]-" + UUID.randomUUID().toString());
     }
 
+    @GetMapping("/bulkhead")
+    public ResultData<String> testBulkHead(@RequestParam("id") Integer id) {
+        if (id == -4) {
+            throw new RuntimeException("circuit breaker failed, not  -4");
+        }
+        if (id == 9999) {
+            try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+        }
+        return ResultData.success("success:[" + id + "]-" + UUID.randomUUID().toString());
+    }
+
 }

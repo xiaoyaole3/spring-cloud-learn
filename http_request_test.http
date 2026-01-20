@@ -36,3 +36,9 @@ GET http://127.0.0.1:8002/order/circuit/test?id=-4
 
 ### 模拟断路器接口慢调用请求，可以看到服务降级
 GET http://127.0.0.1:8002/order/circuit/test?id=9999
+
+### 模拟仓壁隔离接口正常请求
+GET http://127.0.0.1:8002/order/circuit/bulkhead/semaphore?id=3
+
+### 模拟仓壁隔离接口异常请求
+GET http://127.0.0.1:8002/order/circuit/bulkhead/semaphore?id=9999
