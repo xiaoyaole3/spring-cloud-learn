@@ -37,4 +37,7 @@ public interface PaymentFeignAPI {
 
     @GetMapping("/circuit/rateLimit")
     ResultData<String> testRateLimit(@RequestParam("id") Integer id);
+
+    @GetMapping("/micrometer/hello")
+    ResultData<String> payMicrometer(@RequestParam(name = "id") Integer id);
 }

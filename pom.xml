@@ -43,6 +43,11 @@
         <jackson.version>2.19.4</jackson.version>
         <springcloud.alibaba.verison>2023.0.1.0</springcloud.alibaba.verison>
         <spring.bootstrap.version>4.0.4</spring.bootstrap.version>
+
+        <micrometer-tracing.version>1.2.0</micrometer-tracing.version>
+        <micrometer-observation.version>1.12.0</micrometer-observation.version>
+        <micrometer-feign>12.5</micrometer-feign>
+        <zipkin-reporter-brave.version>2.17.0</zipkin-reporter-brave.version>
     </properties>
 
     <dependencyManagement>
@@ -130,6 +135,26 @@
             <!--     <artifactId>jackson-databind</artifactId> -->
             <!--     <version>${jackson.version}</version> -->
             <!-- </dependency> -->
+
+            <!-- 引入micrometer相关组件 -->
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-tracing-bom</artifactId>
+                <version>${micrometer-tracing.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-micrometer</artifactId>
+                <version>${micrometer-feign}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.zipkin.reporter2</groupId>
+                <artifactId>zipkin-reporter-bom</artifactId>
+                <version>${zipkin-reporter-brave.version}</version>
+            </dependency>
+
 
         </dependencies>
 

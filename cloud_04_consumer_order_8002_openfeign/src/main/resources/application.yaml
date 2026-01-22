@@ -112,6 +112,14 @@ resilience4j:
       cloud-provider-payment:
         base-config: default
 
+management:
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+  tracing:
+    sampling:
+      # 采样率(默认为0.1,就是10次会有1次被采样)
+      probability: 1.0
 
 # 开启打印OpenFeign接口的日志
 logging:
