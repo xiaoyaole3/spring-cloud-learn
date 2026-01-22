@@ -7,5 +7,5 @@ docker run --name=consul-server -d -p 8500:8500 -p 8600:8600/udp hashicorp/consu
 # Zipkin 使用 docker 进行安装
 
 ```docker
-docker run -d -p 9411:9411 --name zipkin  openzipkin/zipkin
+docker run -d -p 9411:9411 --name zipkin  openzipkin/zipkin:v3.0.0
 ```
