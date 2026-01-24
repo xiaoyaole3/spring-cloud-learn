@@ -30,3 +30,4 @@ spring:
             - Cookie=sender, wander
             - Header=X-Request-Id, \d+
             - Host=*.wander.com
+            - My=diamond

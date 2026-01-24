@@ -65,7 +65,7 @@ GET http://127.0.0.1:9001/gateway/info
 GET http://127.0.0.1:9527/gateway/get?id=1
 
 ### 访问网关测试服务端info接口
-GET http://127.0.0.1:9527/gateway/info
+GET http://127.0.0.1:9527/gateway/info?userType=diamond
 Cookie: sender=wander
 X-Request-Id: 123
 Host: nas.wander.com
