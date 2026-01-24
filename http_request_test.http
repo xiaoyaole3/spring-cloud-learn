@@ -70,3 +70,6 @@ GET http://127.0.0.1:9527/gateway/info
 
 ### 通过consumer端尝试通过OpenFeign访问接口
 GET http://127.0.0.1:8002/gateway/info
+
+### 系统外部服务通过feign接口访问时，应该通过网关
+GET http://127.0.0.1:9901/out/gateway/info

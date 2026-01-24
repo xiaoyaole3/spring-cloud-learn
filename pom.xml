@@ -17,6 +17,7 @@
         <module>cloud_04_consumer_order_8002_openfeign</module>
         <module>cloud_00_provider_payment_common</module>
         <module>cloud_05_gateway_9527</module>
+        <module>cloud_06_consumer_out</module>
     </modules>
 
     <parent>
