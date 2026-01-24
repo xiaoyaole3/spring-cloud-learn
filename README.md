@@ -55,3 +55,11 @@
 - 修改默认使用的HTTP连接方式为HttpClient5
 - 请求/响应的GZIP压缩
 - 日志打印功能
+
+## cloud_05_gateway_9527
+
+`gateway` 工程，实现网关相关的能力，对于外部用户屏蔽内部服务情况。
+
+## cloud_06_consumer_out_9901
+
+模拟外部服务访问系统内部，feign接口上面标注的应该为gateway服务，通过请求gateway服务来访问对应的信息。
