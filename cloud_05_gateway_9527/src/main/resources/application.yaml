@@ -16,11 +16,13 @@ spring:
     gateway:
       routes:
         - id: pay_get # 路由的唯一ID
-          uri: "http://localhost:9001" # 路由匹配后提供服务的地址
+          # uri: "http://localhost:9001" # 路由匹配后提供服务的地址
+          uri:
+            lb://cloud-provider-payment # 通过微服务名字来进行匹配
           predicates:
             - Path=/gateway/get/** # 断言，路径匹配相对应的路由
         - id: pay_info
-          uri:
-            "http://localhost:9001"
+          # uri: "http://localhost:9001"
+          uri: lb://cloud-provider-payment
           predicates:
             - Path=/gateway/info
