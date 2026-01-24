@@ -40,4 +40,10 @@ public interface PaymentFeignAPI {
 
     @GetMapping("/micrometer/hello")
     ResultData<String> payMicrometer(@RequestParam(name = "id") Integer id);
+
+    @GetMapping("/gateway/get")
+    ResultData<PayDTO> gatewayGetById(@RequestParam(value = "id") Integer id);
+
+    @GetMapping("/gateway/info")
+    ResultData<String> getGatewayInfo();
 }

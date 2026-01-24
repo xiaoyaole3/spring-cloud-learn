@@ -21,7 +21,7 @@ public class PayGatewayController {
     private PayService payService;
 
     @GetMapping("/get")
-    public ResultData<PayDTO> getById(@RequestParam(value = "id") Integer id) {
+    public ResultData<PayDTO> gatewayGetById(@RequestParam(value = "id") Integer id) {
         Pay byId = payService.getById(id);
         PayDTO payDTO = new PayDTO();
         BeanUtils.copyProperties(byId,payDTO);
