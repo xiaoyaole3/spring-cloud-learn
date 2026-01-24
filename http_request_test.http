@@ -14,7 +14,6 @@ GET http://127.0.0.1:8002/order/feign/consul
 <> 2026-01-17T221045.200.json
 
 ### 使用OpenFeign新增一条记录
-
 POST http://127.0.0.1:8002/order/feign/add
 Content-Type: application/json
 
@@ -67,6 +66,7 @@ GET http://127.0.0.1:9527/gateway/get?id=1
 
 ### 访问网关测试服务端info接口
 GET http://127.0.0.1:9527/gateway/info
+Cookie: sender=wander
 
 ### 通过consumer端尝试通过OpenFeign访问接口
 GET http://127.0.0.1:8002/gateway/info
