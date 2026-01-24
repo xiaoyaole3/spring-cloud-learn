@@ -29,3 +29,4 @@ spring:
             - After=2026-01-24T22:42:10.345714+08:00[Asia/Shanghai]
             - Cookie=sender, wander
             - Header=X-Request-Id, \d+
+            - Host=*.wander.com
