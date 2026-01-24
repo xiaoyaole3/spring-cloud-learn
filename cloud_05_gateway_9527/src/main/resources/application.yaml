@@ -31,3 +31,10 @@ spring:
             - Header=X-Request-Id, \d+
             - Host=*.wander.com
             - My=diamond
+        - id: pay_filter
+          uri: lb://cloud-provider-payment
+          predicates:
+            - Path=/gateway/filter
+          filters:
+            - AddRequestHeader=X-Request-wander1,wander1
+            - AddRequestHeader=X-Request-wander2,wander2

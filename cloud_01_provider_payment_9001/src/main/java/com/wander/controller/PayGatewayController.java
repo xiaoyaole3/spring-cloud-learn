@@ -5,12 +5,15 @@ import com.wander.entity.Pay;
 import com.wander.service.PayService;
 import com.wander.vo.ResultData;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.Instant;
+import java.util.Enumeration;
 import java.util.UUID;
 
 @RestController
@@ -31,5 +34,22 @@ public class PayGatewayController {
     @GetMapping("/info")
     public ResultData<String> getGatewayInfo() {
         return ResultData.success("Gateway info : " + UUID.randomUUID().toString());
+    }
+
+    @GetMapping("/filter")
+    public ResultData<String> getGatewayFilter(HttpServletRequest request) {
+        String result = "";
+
+        Enumeration<String> headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements()) {
+            String headerName = headerNames.nextElement();
+            String headerValue = request.getHeader(headerName);
+            System.out.println(headerName + ":" + headerValue);
+
+            if (headerName.matches("X-Request-wander*")) {
+                result = headerName + ":" + headerValue;
+            }
+        }
+        return ResultData.success("Gateway filter result : " + result + " " + Instant.now().toString());
     }
 }

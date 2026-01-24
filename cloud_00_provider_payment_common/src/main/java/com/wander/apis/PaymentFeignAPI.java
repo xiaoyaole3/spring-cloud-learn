@@ -2,6 +2,7 @@ package com.wander.apis;
 
 import com.wander.dto.PayDTO;
 import com.wander.vo.ResultData;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,4 +47,7 @@ public interface PaymentFeignAPI {
 
     @GetMapping("/gateway/info")
     ResultData<String> getGatewayInfo();
+
+    @GetMapping("/gateway/filter")
+    ResultData<String> getGatewayFilter(HttpServletRequest request);
 }
