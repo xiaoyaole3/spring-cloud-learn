@@ -52,3 +52,6 @@ GET http://127.0.0.1:8002/order/circuit/bulkhead/threadPool?id=9999
 
 ### 模拟限流请求
 GET http://127.0.0.1:8002/order/circuit/rateLimit?id=1
+
+### 链路跟踪测试
+GET http://127.0.0.1:8002/order/feign/micrometer/hello?id=1
