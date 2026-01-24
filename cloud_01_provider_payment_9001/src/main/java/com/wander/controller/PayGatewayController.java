@@ -38,7 +38,7 @@ public class PayGatewayController {
 
     @GetMapping("/filter")
     public ResultData<String> getGatewayFilter(HttpServletRequest request) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
@@ -46,8 +46,8 @@ public class PayGatewayController {
             String headerValue = request.getHeader(headerName);
             System.out.println(headerName + ":" + headerValue);
 
-            if (headerName.matches("X-Request-wander*")) {
-                result = headerName + ":" + headerValue;
+            if (headerName.matches("x-request-wander.*")) {
+                result.append(headerName).append(":").append(headerValue);
             }
         }
         return ResultData.success("Gateway filter result : " + result + " " + Instant.now().toString());
