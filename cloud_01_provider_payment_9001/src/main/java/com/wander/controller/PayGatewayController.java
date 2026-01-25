@@ -52,9 +52,14 @@ public class PayGatewayController {
                 result.append(headerName).append(":").append(headerValue);
             }
         }
-
         // 添加返回的请求头信息
         response.setHeader("x-response-wander", "aa");
+
+        // 获取请求参数
+        String customerId = request.getParameter("customerId");
+        String customerName = request.getParameter("customerName");
+        System.out.println("customerId:" + customerId + ",customerName:" + customerName);
+
         return ResultData.success("Gateway filter result : " + result + " " + Instant.now().toString());
     }
 }

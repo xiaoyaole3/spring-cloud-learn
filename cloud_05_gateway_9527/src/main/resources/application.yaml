@@ -39,3 +39,5 @@ spring:
             - AddRequestHeader=X-Request-wander1,wander1
             - AddRequestHeader=X-Request-wander2,wander2
             - RemoveRequestHeader=user-agent
+            - AddRequestParameter=customerId,9527
+            - RemoveRequestParameter=customerName

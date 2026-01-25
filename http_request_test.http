@@ -73,6 +73,9 @@ Host: nas.wander.com
 ### 访问网关测试服务端filter接口
 GET http://127.0.0.1:9527/gateway/filter
 
+### 访问网关测试服务端filter接口，测试携带参数
+GET http://127.0.0.1:9527/gateway/filter?customerId=123&customerName=zs
+
 ### 通过consumer端尝试通过OpenFeign访问接口
 GET http://127.0.0.1:8002/gateway/info
 
