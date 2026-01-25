@@ -3,13 +3,18 @@ server:
 
 spring:
   application:
-    name: cloud-provider-payment-9001
+    name: cloud-alibaba-provider-9001
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:33061/db2023?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
     username: root
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

@@ -23,7 +23,7 @@ docker run -d -p 8848:8848 -p 9848:9848 -p 9849:9849 \
 -e NACOS_AUTH_IDENTITY_KEY=nacos \
 -e NACOS_AUTH_IDENTITY_VALUE=nacos \
 -e SPRING_DATASOURCE_PLATFORM=mysql \
--e MYSQL_SERVICE_HOST=127.0.0.1 \
+-e MYSQL_SERVICE_HOST=192.168.31.191 \
 -e MYSQL_SERVICE_USER=root \
 -e MYSQL_SERVICE_PASSWORD=123456 \
 -e MYSQL_SERVICE_DB_NAME=nacos_config \
@@ -31,6 +31,5 @@ docker run -d -p 8848:8848 -p 9848:9848 -p 9849:9849 \
 -e JVM_XMS=256m \
 -e JVM_XMX=256m \
 -e JVM_XMN=256m \
---network host \
 nacos/nacos-server:v2.3.2-slim
 ```

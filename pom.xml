@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>mybatis_generator2023</module>
-        <module>cloud_01_provider_payment_9001</module>
+        <module>cloud_alibaba_01_provider_payment_9001</module>
         <module>cloud_00_common</module>
     </modules>
 
