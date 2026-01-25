@@ -100,6 +100,7 @@ public class ResultData<T> {
     public static <T> ResultData<T> success(T data) {
         return ResultData.<T>builder()
                 .code(ReturnCodeEnum.RC200)
+                .msg("success")
                 .data(data)
                 .build();
     }
