@@ -44,6 +44,7 @@ spring:
             - AddResponseHeader=X-Response-wander2, wander2value
             - SetResponseHeader=Date,2009-11-11
             - RemoveResponseHeader=X-Response-wander
+            - MyCustom=yes
         - id: pay_prefix_filter
           uri: lb://cloud-provider-payment
           predicates:
