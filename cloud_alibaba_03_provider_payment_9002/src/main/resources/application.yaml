@@ -1,5 +1,5 @@
 server:
-  port: 9001
+  port: 9002
 
 spring:
   application:
@@ -15,9 +15,3 @@ spring:
       server-addr: 127.0.0.1:8848
       username: nacos
       password: nacos
-
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.wander.entity
-  configuration:
-    map-underscore-to-camel-case: true

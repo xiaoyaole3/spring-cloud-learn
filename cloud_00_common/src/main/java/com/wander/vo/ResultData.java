@@ -2,8 +2,10 @@ package com.wander.vo;
 
 import com.wander.enums.ReturnCodeEnum;
 
+import java.io.Serializable;
+
 // 统一返回类型
-public class ResultData<T> {
+public class ResultData<T> implements Serializable {
 
     private String code;
 
@@ -12,6 +14,16 @@ public class ResultData<T> {
     private T data;
 
     private Long timestamp;
+
+    public ResultData() {
+    }
+
+    public ResultData(String code, String msg, T data, Long timestamp) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+        this.timestamp = timestamp;
+    }
 
     public ResultData(String code, String msg, T data) {
         this.code = code;

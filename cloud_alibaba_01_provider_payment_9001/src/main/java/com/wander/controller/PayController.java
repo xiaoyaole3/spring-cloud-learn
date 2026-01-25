@@ -8,9 +8,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Tag(name = "支付微服务模块", description = "支付CRUD")
 @RestController
@@ -24,7 +26,9 @@ public class PayController {
     @Operation(summary = "新增", description = "新增一个支付")
     @PostMapping("/add")
     public ResultData<Integer> add(@RequestBody PayDTO pay) {
-        return ResultData.success(payService.add(pay));
+        Pay payInsert = new Pay();
+        BeanUtils.copyProperties(pay, payInsert);
+        return ResultData.success(payService.add(payInsert));
     }
 
     @Operation(summary = "删除", description = "删除一个支付")
@@ -36,7 +40,9 @@ public class PayController {
     @Operation(summary = "更改", description = "更改一个支付")
     @PutMapping("/update")
     public ResultData<Integer> update(@RequestBody PayDTO pay) {
-        return ResultData.success(payService.update(pay));
+        Pay payUpdate = new Pay();
+        BeanUtils.copyProperties(pay, payUpdate);
+        return ResultData.success(payService.update(payUpdate));
     }
 
     @Operation(summary = "获取", description = "获取单个支付")
@@ -54,4 +60,11 @@ public class PayController {
         return ResultData.success(payService.getAll());
     }
 
+    @Value("${server.port}")
+    private Integer port;
+
+    @GetMapping("/info")
+    public ResultData<String> getInfo() {
+        return ResultData.success("currentNode info = " + port + " " + UUID.randomUUID().toString());
+    }
 }

@@ -1,2 +1,11 @@
 ### 访问服务端GET接口，测试服务端是否能够正常提供服务
 GET http://127.0.0.1:9001/pay/get?id=1
+
+### 访问服务端GET接口，测试服务端是否能够正常提供服务
+GET http://127.0.0.1:9001/pay/info
+
+### 访问服务端GET接口，测试服务端是否能够正常提供服务
+GET http://127.0.0.1:9002/pay/info
+
+### 测试通过RestTemplate进行负载均衡
+GET http://127.0.0.1:8001/restTemplate/info
