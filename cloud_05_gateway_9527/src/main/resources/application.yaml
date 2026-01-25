@@ -50,3 +50,16 @@ spring:
             - Path=/gateway2/filter
           filters:
             - PrefixPath=/pay/prefix # 增加前缀
+        - id: pay_set_path_filter
+          uri: lb://cloud-provider-payment
+          predicates:
+            - Path=/XYZ/abc/{segment} # segment 表示占位符，任意命名，需要一致，占位符表示一个字段
+          filters:
+            - SetPath=/pay/path/{segment}
+        - id: pay_rewrite_path_filter
+          uri: lb://cloud-provider-payment
+          predicates:
+            - Path=/api/pay/**
+          filters:
+            # 这里将 /abc/xxx 替换为 /xxx
+            - RewritePath=/api/?(?<segment>.*), /$\{segment} # $需要被替换为$\，由于yaml特性
