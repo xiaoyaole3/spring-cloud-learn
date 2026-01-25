@@ -38,3 +38,4 @@ spring:
           filters:
             - AddRequestHeader=X-Request-wander1,wander1
             - AddRequestHeader=X-Request-wander2,wander2
+            - RemoveRequestHeader=user-agent

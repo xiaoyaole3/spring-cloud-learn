@@ -6,6 +6,7 @@ import com.wander.service.PayService;
 import com.wander.vo.ResultData;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;
 import java.util.Enumeration;
+import java.util.HexFormat;
 import java.util.UUID;
 
 @RestController
@@ -37,7 +39,7 @@ public class PayGatewayController {
     }
 
     @GetMapping("/filter")
-    public ResultData<String> getGatewayFilter(HttpServletRequest request) {
+    public ResultData<String> getGatewayFilter(HttpServletRequest request, HttpServletResponse response) {
         StringBuilder result = new StringBuilder();
 
         Enumeration<String> headerNames = request.getHeaderNames();
@@ -50,6 +52,9 @@ public class PayGatewayController {
                 result.append(headerName).append(":").append(headerValue);
             }
         }
+
+        // 添加返回的请求头信息
+        response.setHeader("x-response-wander", "aa");
         return ResultData.success("Gateway filter result : " + result + " " + Instant.now().toString());
     }
 }
