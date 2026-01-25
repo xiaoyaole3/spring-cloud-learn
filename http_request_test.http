@@ -85,6 +85,9 @@ GET http://127.0.0.1:9527/XYZ/abc/filter
 ### 访问网关测试，重写path
 GET http://127.0.0.1:9527/api/pay/gateway2/real/filter
 
+### 访问网关测试，重定向到百度
+GET http://127.0.0.1:9527/redirect/wwww
+
 ### 通过consumer端尝试通过OpenFeign访问接口
 GET http://127.0.0.1:8002/gateway/info
 

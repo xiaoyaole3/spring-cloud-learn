@@ -63,3 +63,9 @@ spring:
           filters:
             # 这里将 /abc/xxx 替换为 /xxx
             - RewritePath=/api/?(?<segment>.*), /$\{segment} # $需要被替换为$\，由于yaml特性
+        - id: pay_redirect_path_filter
+          uri: lb://cloud-provider-payment
+          predicates:
+            - Path=/redirect/**
+          filters:
+            - RedirectTo=302, http://www.baidu.com, true
