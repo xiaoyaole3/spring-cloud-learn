@@ -14,7 +14,14 @@
         <module>cloud_00_common</module>
         <module>cloud_alibaba_02_consumer_order_8001</module>
         <module>cloud_alibaba_03_provider_payment_9002</module>
+        <module>cloud_alibaba_04_nacos_config_client_3377</module>
     </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.4</version>
+    </parent>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -38,14 +45,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- springboot parent 依赖 -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-parent</artifactId>
-                <version>${springboot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
             <!-- spring cloud 相关依赖 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>

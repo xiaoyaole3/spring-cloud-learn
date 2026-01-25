@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: cloud-alibaba-config-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 # Nacos作为服务注册中心地址
+      config:
+        server-addr: localhost:8848 # Nacos作为配置中心地址
+        file-extension: yaml # 指定yaml为配置文件格式，默认为properties
+        group: DEFAULT_GROUP
+        # namespace: b3404bc0-d7dc-4855-b519-570ed34b62d7 # 注意这里配置的是namespace的ID
+      username: nacos
+      password: nacos

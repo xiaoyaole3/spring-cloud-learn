@@ -9,3 +9,6 @@ GET http://127.0.0.1:9002/pay/info
 
 ### 测试通过RestTemplate进行负载均衡
 GET http://127.0.0.1:8001/restTemplate/info
+
+### 测试Nacos作为配置中心获取配置信息，并且测试可以动态刷新
+GET http://127.0.0.1:3377/get/nacos/config
