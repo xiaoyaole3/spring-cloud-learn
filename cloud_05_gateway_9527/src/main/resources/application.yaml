@@ -41,3 +41,6 @@ spring:
             - RemoveRequestHeader=user-agent
             - AddRequestParameter=customerId,9527
             - RemoveRequestParameter=customerName
+            - AddResponseHeader=X-Response-wander2, wander2value
+            - SetResponseHeader=Date,2009-11-11
+            - RemoveResponseHeader=X-Response-wander
