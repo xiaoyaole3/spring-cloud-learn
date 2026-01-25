@@ -16,3 +16,5 @@ create table `t_pay`(
 
 INSERT INTO `t_pay`(pay_no, order_no) VALUES ('pay17203699', '6544bafb424a');
 
+-- 初始化nacos数据库
+CREATE DATABASE nacos_config CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
