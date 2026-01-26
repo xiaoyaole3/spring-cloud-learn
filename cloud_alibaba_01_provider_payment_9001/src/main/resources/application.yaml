@@ -19,6 +19,7 @@ spring:
       transport:
         dashboard: 127.0.0.1:8858 # dashboard控制台地址
         port: 8719 # 默认8791端口，如果被占用，会从8791依次+1扫描，直到找到未被占用的接口
+      web-context-unify: false # 默认为true，上下文是否是同一个链路，修改为false认为controller对service是不同链路
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
