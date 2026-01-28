@@ -27,3 +27,9 @@ GET http://localhost:9001/flow/limit/testG
 
 ### sentinel 按照 @SentinelResource 注解进行测试
 GET http://127.0.0.1:9001/sentinel/resource/byResource?id=2
+
+### sentinel 热点限流
+GET http://127.0.0.1:9001/hotkey/test?goods="phone"&id=3
+
+### sentinel 非热点参数不限流
+GET http://127.0.0.1:9001/hotkey/test?id=3
