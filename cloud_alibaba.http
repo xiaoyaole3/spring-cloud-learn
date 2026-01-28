@@ -24,3 +24,6 @@ GET http://localhost:9001/flow/limit/testF
 
 ### sentinel 测试接口G -- 抛出异常
 GET http://localhost:9001/flow/limit/testG
+
+### sentinel 按照 @SentinelResource 注解进行测试
+GET http://127.0.0.1:9001/sentinel/resource/byResource?id=2
