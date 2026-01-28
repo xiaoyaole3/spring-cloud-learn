@@ -29,7 +29,10 @@ GET http://localhost:9001/flow/limit/testG
 GET http://127.0.0.1:9001/sentinel/resource/byResource?id=2
 
 ### sentinel 热点限流
-GET http://127.0.0.1:9001/hotkey/test?goods="phone"&id=3
+GET http://127.0.0.1:9001/hotkey/test?goods=phone&id=3
+
+### sentinel 热点限流 - 参数例外项额外限流控制
+GET http://127.0.0.1:9001/hotkey/test?goods=book&id=3
 
 ### sentinel 非热点参数不限流
 GET http://127.0.0.1:9001/hotkey/test?id=3
