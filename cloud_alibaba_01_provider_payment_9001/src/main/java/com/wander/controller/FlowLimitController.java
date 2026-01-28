@@ -50,4 +50,13 @@ public class FlowLimitController {
         }
         return ResultData.success("testF");
     }
+
+    @GetMapping("/testG")
+    public ResultData<String> testG() {
+        sentinelFlowLimitService.common();
+        if (1 > 0) {
+            throw new RuntimeException("testG");
+        }
+        return ResultData.success("testG");
+    }
 }

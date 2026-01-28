@@ -21,3 +21,6 @@ GET http://localhost:9001/flow/limit/testB
 
 ### sentinel 测试接口F -- sleep1
 GET http://localhost:9001/flow/limit/testF
+
+### sentinel 测试接口G -- 抛出异常
+GET http://localhost:9001/flow/limit/testG
