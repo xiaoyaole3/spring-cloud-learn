@@ -36,3 +36,9 @@ GET http://127.0.0.1:9001/hotkey/test?goods=book&id=3
 
 ### sentinel 非热点参数不限流
 GET http://127.0.0.1:9001/hotkey/test?id=3
+
+### 授权规则测试 - 白名单
+GET http://127.0.0.1:9001/grant/grant?serverName=test
+
+### 授权规则测试 - 黑名单
+GET http://127.0.0.1:9001/grant/grant?serverName=test3
