@@ -40,4 +40,14 @@ public class FlowLimitController {
         return ResultData.success("testD");
     }
 
+    @GetMapping("/testF")
+    public ResultData<String> testF() {
+        sentinelFlowLimitService.common();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return ResultData.success("testF");
+    }
 }
