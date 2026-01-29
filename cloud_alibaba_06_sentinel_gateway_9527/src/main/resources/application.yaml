@@ -1,0 +1,17 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: sentinel-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+    gateway:
+      routes:
+        - id: pay_route1
+          uri: http://127.0.0.1:9001
+          predicates:
+            - Path=/pay/**

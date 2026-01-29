@@ -53,3 +53,6 @@ GET http://127.0.0.1:8002/order/orderNo?
 ### 测试feign结合sentinel，客户端调用服务端提供的服务，服务端抛出异常
 GET http://127.0.0.1:8002/order/orderNo?
     orderNo=6544bafb424b
+
+### 测试网关调用接口
+GET http://127.0.0.1:9527/pay/feign/orderNo?orderNo=6544bafb424a

@@ -17,6 +17,7 @@
         <module>cloud_alibaba_04_nacos_config_client_3377</module>
         <module>cloud_00_payment_api</module>
         <module>cloud_alibaba_05_consumer_order_openfeign_8002</module>
+        <module>cloud_alibaba_06_sentinel_gateway_9527</module>
     </modules>
 
     <parent>
