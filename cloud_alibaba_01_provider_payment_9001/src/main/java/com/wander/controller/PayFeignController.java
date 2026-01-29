@@ -39,7 +39,7 @@ public class PayFeignController {
                 return ResultData.success(pay);
             }
         }
-        return ResultData.error("Not get the pay by orderNo");
+        return ResultData.error("Not get the pay by orderNo" + 1/0);
     }
 
     public ResultData payFeignBlockHandler(@RequestParam(name = "orderNo") String orderNo, BlockException exception) {
