@@ -42,3 +42,6 @@ GET http://127.0.0.1:9001/grant/grant?serverName=test
 
 ### 授权规则测试 - 黑名单
 GET http://127.0.0.1:9001/grant/grant?serverName=test3
+
+### 测试feign结合sentinel，统一配置fallback的服务端接口
+GET http://127.0.0.1:9001/pay/feign/orderNo?orderNo=6544bafb424a
