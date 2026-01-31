@@ -17,6 +17,10 @@
 /*   数据库全名 = nacos_config   */
 /*   表名称 = config_info   */
 /******************************************/
+
+-- 初始化nacos数据库
+CREATE DATABASE nacos_config CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
 CREATE TABLE `config_info` (
                                `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
                                `data_id` varchar(255) NOT NULL COMMENT 'data_id',
