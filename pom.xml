@@ -20,6 +20,8 @@
         <module>cloud_alibaba_06_sentinel_gateway_9527</module>
         <module>cloud_00_seata_api</module>
         <module>cloud_alibaba_07_seata_order_9101</module>
+        <module>cloud_alibaba_08_seata_storage_9102</module>
+        <module>cloud_alibaba_09_seata_acount_9103</module>
     </modules>
 
     <parent>
