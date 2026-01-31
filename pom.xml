@@ -18,6 +18,8 @@
         <module>cloud_00_payment_api</module>
         <module>cloud_alibaba_05_consumer_order_openfeign_8002</module>
         <module>cloud_alibaba_06_sentinel_gateway_9527</module>
+        <module>cloud_00_seata_api</module>
+        <module>cloud_alibaba_07_seata_order_9101</module>
     </modules>
 
     <parent>
