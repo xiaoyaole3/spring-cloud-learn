@@ -32,6 +32,8 @@ seata:
       namespace: "" # 为默认的public
       group: SEATA_GROUP
       application: seata-server
+      username: nacos
+      password: nacos
   tx-service-group: default_tx_group # 事务组，由他获得TC服务的集群名称
   service:
     vgroup-mapping: # 查看源码
