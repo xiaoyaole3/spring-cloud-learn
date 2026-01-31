@@ -1,0 +1,41 @@
+server:
+  port: 9103
+spring:
+  application:
+    name: seata-account-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:33061/seata_account?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.wander.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+seata:
+  registry:
+    type: nacos
+    nacos:
+      server-addr: localhost:8848
+      username: nacos
+      password: nacos
+      group: SEATA_GROUP
+      namespace: ""
+      application: seata-server
+  tx-service-group: default_tx_group # 事务组，由他获得TC服务的集群名称
+  service:
+    vgroup-mapping: # 查看源码
+      default_tx_group: default # 事务组与TC服务集群的映射关系
+  data-source-proxy-mode: AT
+logging:
+  level:
+    io.seata: info
