@@ -12,7 +12,8 @@
     <result column="residue" jdbcType="INTEGER" property="residue" />
   </resultMap>
   <update id="decrease">
-    update t_storage set used = used + #{count}, residue = total - #{count}
+    update t_storage set used = used + #{count},
+                         residue = total - used
     where product_id = #{productId}
   </update>
 </mapper>

@@ -6,6 +6,7 @@ import com.wander.entity.Order;
 import com.wander.mapper.OrderMapper;
 import com.wander.service.OrderService;
 import io.seata.core.context.RootContext;
+import io.seata.spring.annotation.GlobalTransactional;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ public class OrderServiceImpl implements OrderService {
     @Resource
     private AccountFeignApi accountFeignApi;
 
+    @GlobalTransactional(name = "wander-create-order", rollbackFor = Exception.class)
     @Override
     public Integer create(Order order) {
         // XID 全局事务ID的检查，重要
@@ -54,6 +56,7 @@ public class OrderServiceImpl implements OrderService {
             // 学习criteria语法
             Example example = new Example(Order.class);
             example.createCriteria()
+                    .andEqualTo("id", orderFromDB.getId())
                     .andEqualTo("userId", orderFromDB.getUserId())
                     .andEqualTo("productId", orderFromDB.getProductId())
                     .andEqualTo("status", 0);
