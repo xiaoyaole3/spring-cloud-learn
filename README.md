@@ -20,4 +20,46 @@
 
 从 `订单 -> 支付`，逐步引入各个组件。
 
+## 00_payment_api
 
+集成了 payment 对外暴露的 openfeign 接口。
+
+## 00_seata_api
+
+集成了 seata 中 storage 服务和 account 服务对外暴露的 openfeign 接口。
+
+## 01_provider_payment_9001
+
+1. 使用 nacos 进行服务注册发现，提供 payment 先关的能力和服务。
+2. 集成了 sentinel 测试服务流控、降级、熔断、热点、参数限流等能力。
+
+## 02_consumer_order_8001
+
+使用 RestTemplate 访问注册到 nacos 注册中新的微服务。
+
+## 03_provider_payment_9002
+
+测试服务提供端提供的负载均衡能力。
+
+## 04_nacos_config_client_3377
+
+用于测试 nacos 作为配置中心的能力，通过 bootstrap.yaml 配置与 nacos 的连接信息。
+
+## 05_consumer_order_openfeign_8002
+
+1. 使用 openFeign 对于 payment 服务进行调用。
+2. openFeign 集成了 sentinel，在 Feign 接口处使用全局的 fallback 类来配置接口的 fallback 函数。
+
+## 06_sentinel_gateway_9527
+
+sentinel 结合 gateway 网关，实现对于网关 route 的限流控制。
+
+## 07_seata_order_9101、08_seata_storage_9102、09_seata_account_9103
+
+项目结合 seata 实现分布式事务的管理，通过 `@GlobalTransactional` 注解进行控制。
+
+分布式事务支持下面的几种模式：
+- AT模式
+- TCC模式
+- SAGA模式
+- XA模式
