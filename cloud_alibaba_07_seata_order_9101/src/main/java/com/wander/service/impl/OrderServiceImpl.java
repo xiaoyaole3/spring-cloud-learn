@@ -52,12 +52,12 @@ public class OrderServiceImpl implements OrderService {
             orderFromDB.setStatus(1);
 
             // 学习criteria语法
-            Example.Criteria criteria = new Example(Order.class)
-                    .createCriteria()
+            Example example = new Example(Order.class);
+            example.createCriteria()
                     .andEqualTo("userId", orderFromDB.getUserId())
                     .andEqualTo("productId", orderFromDB.getProductId())
-                    .andEqualTo("status", 9);
-            int updated = orderMapper.updateByExampleSelective(orderFromDB, criteria);
+                    .andEqualTo("status", 0);
+            int updated = orderMapper.updateByExampleSelective(orderFromDB, example);
             if (updated > 0) {
                 log.info("Update order success,  id is {}", orderFromDB.getId());
             }

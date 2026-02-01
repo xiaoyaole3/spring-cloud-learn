@@ -56,3 +56,15 @@ GET http://127.0.0.1:8002/order/orderNo?
 
 ### 测试网关调用接口
 GET http://127.0.0.1:9527/pay/feign/orderNo?orderNo=6544bafb424a
+
+
+### 测试seata全局事务
+POST http://127.0.0.1:9101/order/create
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "productId": 1,
+    "count": 10,
+    "money": 100
+}
